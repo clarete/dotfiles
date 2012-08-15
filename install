@@ -1,0 +1,85 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Small tool to install links for my dotfiles
+"""
+
+import os
+import sys
+import argparse
+import shutil
+import couleur
+
+
+# I love this API :)
+couleur.proxy(sys.stdout).enable()
+
+
+def files_to_copy():
+    """Retrieves a list of files that should be copied"""
+    files = os.listdir(os.path.dirname(__file__))
+    files.remove(os.path.basename(__file__))
+    return files
+
+
+def backup(args):
+    """Backs up any existing file"""
+    # Just making sure that our backup folder is empty
+    if os.path.exists(args.bkpdir):
+        print('#{red}Not good!#{normal} Your backup folder is not empty')
+        prompt = raw_input('  Should I remove it and continue? (y, n): ')
+        if not prompt.lower() in ('y', 'yes'):
+            print('  Backup your stuff and try again')
+            exit(-1)
+
+        print("  Aaaaaaand it's gone")
+        shutil.rmtree(args.bkpdir)
+
+    # Saving a list of files to be backed up
+    files_to_backup = []
+    for i in files_to_copy():
+        current = os.path.join(args.home, i)
+
+        # It's just a link, we can send it to hell
+        if os.path.islink(current):
+            os.unlink(current)
+        if os.path.exists(current):
+            files_to_backup.append(current)
+
+    # Actuall backup
+    if files_to_backup:
+        os.mkdir(args.bkpdir, 0700)
+        for i in files_to_backup:
+            shutil.move(i, args.bkpdir)
+
+
+def link(args):
+    """Links the files in the checkout folder to the destdir"""
+    print("#{green}Linking the files!#{normal}")
+    for i in files_to_copy():
+        src = os.path.join(os.path.abspath(os.path.dirname(__file__)), i)
+        dest = os.path.join(args.home, i)
+        os.symlink(src, dest)
+        print(u' * {} #{{green}} ✔ #{{normal}}'.format(i))
+
+
+def main():
+    """Processes the command line args and calls the backup and
+    linking functions"""
+    home = os.path.expanduser('~')
+    bkpdir = os.path.join(home, '.dotfiles.bkp')
+
+    parser = argparse.ArgumentParser(description='dotfile installer')
+    parser.add_argument(
+        '--destdir', dest='home', default=home, action='store',
+        help='Target folder to install files, default to your home')
+    parser.add_argument(
+        '--bkpdir', dest='bkpdir', default=bkpdir, action='store',
+        help='Folder used to copy old files before linking, defaults '
+             'to ~/.dotfiles.bkp')
+    args = parser.parse_args()
+    backup(args)
+    link(args)
+
+
+if __name__ == '__main__':
+    main()
