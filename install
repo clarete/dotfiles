@@ -14,10 +14,18 @@ import couleur
 couleur.proxy(sys.stdout).enable()
 
 
+AVOID_LIST = (
+    os.path.basename(__file__),
+    'requirements.pip',
+    '.git',
+)
+
+
 def files_to_copy():
     """Retrieves a list of files that should be copied"""
-    files = os.listdir(os.path.dirname(__file__))
-    files.remove(os.path.basename(__file__))
+    files = [
+        i for i in os.listdir(os.path.dirname(__file__))
+           if i not in AVOID_LIST]
     return files
 
 
