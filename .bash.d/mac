@@ -1,0 +1,18 @@
+# What is the right path
+PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+PATH="/usr/local/bin:$PATH"
+PATH="/usr/local/share/python:$PATH"
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+# Python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+. /usr/local/share/python/virtualenvwrapper.sh
+
+export EDITOR="vim"
