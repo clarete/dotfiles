@@ -23,7 +23,7 @@ chatnets = {
   };
   Freenode = {
     type = "IRC";
-    autosendcmd = "/msg nickserv identify @nick@ @password@; wait 2000";
+    autosendcmd = "/msg nickserv identify $IRC_NICK $IRC_PASSWORD; wait 2000";
   };
 };
 
