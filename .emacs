@@ -29,8 +29,6 @@
 (global-font-lock-mode 1)
 
 ;; Font face/size
-;(add-to-list 'default-frame-alist '(font . "Monospace 8"))
-;(add-to-list 'default-frame-alist '(font . "Monospace 12"))
 (add-to-list 'default-frame-alist '(font . "6x13"))
 
 ;;; Also highlight parens
@@ -103,6 +101,16 @@
 ;; other window
 ;(global-set-key [C-tab] 'other-window)
 
+;; Adding marmalade as a repo to the package module
+(require 'package)
+(add-to-list
+ 'package-archives
+ '("marmalade" .
+   "http://marmalade-repo.org/packages/")
+ '("melpa" .
+   "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
 ;; mutt
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
@@ -115,32 +123,23 @@
 ;; javascript config
 (setq js2-consistent-level-indent-inner-bracket-p 1)
 (setq js2-pretty-multiline-decl-indentation-p 1)
-(add-to-list 'load-path "~/.emacs.d/elisp/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-;; jade mode
-(add-to-list 'load-path "~/.emacs.d/elisp/jade-mode")
-(require 'sws-mode)
-(require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
-(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
-
 ;; sass and haml mode
-(add-to-list 'load-path "~/.emacs.d/elisp/sass-mode")
-(add-to-list 'load-path "~/.emacs.d/elisp/haml-mode")
 (require 'sass-mode)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
 
 ;; less mode
-(add-to-list 'load-path "~/.emacs.d/elisp/less-mode")
-(require 'less-mode)
-(add-to-list 'auto-mode-alist '("\\.less$" . less-mode))
+(require 'less-css-mode)
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 (setq less-compile-at-save nil)
 
 ;; Markdown mode
 (require 'markdown-mode)
-(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 
 ;; vala mode
@@ -150,40 +149,17 @@
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 
-;; -- currently disabled modules --
-
 ;; lua mode
-;; (require 'lua-mode)
-
-;; Django mode
-;; (add-to-list 'load-path "~/.emacs.d/django-mode")
-;; (require 'django-html-mode)
-;; (require 'django-mode)
-;; (yas/load-directory "~/.emacs.d/django-mode/snippets")
-;; (add-to-list 'auto-mode-alist '("\\.djhtml$" . django-html-mode))
-
-;; rhtml mode
-;; (add-to-list 'load-path "~/.emacs.d/rhtml")
-;; (require 'rhtml-mode)
-;; (add-to-list 'auto-mode-alist '("\\.erb\\'" . rhtml-mode))
+(require 'lua-mode)
 
 ;; CoffeScript mode
-;; (add-to-list 'load-path "~/.emacs.d/elisp/coffee-mode")
-;; (require 'coffee-mode)
-;; (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-;; (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
-;; (defun coffee-custom ()
-;;   "coffee-mode-hook"
-;;  (set (make-local-variable 'tab-width) 2))
-;; (add-hook 'coffee-mode-hook
-;;   '(lambda() (coffee-custom)))
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+(defun coffee-custom () "coffee-mode-hook"
+  (set (make-local-variable 'tab-width) 2))
+(add-hook 'coffee-mode-hook '(lambda() (coffee-custom)))
 
-;; emms
-;; (require 'emms-setup)
-;; (require 'emms-info-libtag)
-;; (require 'emms-player-mpg321-remote)
-;; (emms-devel)
-;; (emms-default-players)
-;; (push 'emms-player-mpg321-remote emms-player-list)
-;; (push 'emms-player-mplayer emms-player-list)
-;; (push 'emms-player-mplayer-playlist emms-player-list)
+;; Personal snippets
+(setq yas/root-directory "~/.emacs.d/snippets")
+(yas/load-directory yas/root-directory)

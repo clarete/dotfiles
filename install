@@ -18,6 +18,7 @@ AVOID_LIST = (
     os.path.basename(__file__),
     'requirements.pip',
     '.git',
+    '.gitignore',
 )
 
 
