@@ -160,6 +160,13 @@
   (set (make-local-variable 'tab-width) 2))
 (add-hook 'coffee-mode-hook '(lambda() (coffee-custom)))
 
+;; Auto complete
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(setq ac-dwim 2)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+
 ;; Personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
