@@ -167,6 +167,10 @@
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+;; Configuring the dropdown list, submodule used by yasnippet
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt))
+
 ;; Personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
