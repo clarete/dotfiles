@@ -89,7 +89,8 @@
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char)) ;; sets fn-delete to be right-delete
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  (menu-bar-mode 1))
 
 ;; scrolling other window
 ;(global-set-key "\M-\C-n" 'scroll-other-window)
