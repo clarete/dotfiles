@@ -1,7 +1,10 @@
+# -*- Mode: shell-script; -*-
+
 # What is the right path
 PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/share/python:$PATH"
+PATH="/Applications/Emacs.app/Contents/MacOs/bin:$PATH"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -15,4 +18,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 . /usr/local/share/python/virtualenvwrapper.sh
 
-export EDITOR="vim"
+export EDITOR="emacsc"
