@@ -181,3 +181,6 @@
 ;; Personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
+
+;; Enabling the server mode by default
+(server-mode)
