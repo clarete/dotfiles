@@ -46,6 +46,9 @@
 ;; gdb
 (setq gdb-many-windows 1)
 
+;; There's no place like home
+(setq default-directory "~/")
+
 ;; show line numbers
 (require 'linum)
 (global-linum-mode 1)
