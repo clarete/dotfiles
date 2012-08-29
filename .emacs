@@ -36,7 +36,7 @@
 (show-paren-mode 1)
 
 ;; no bars
-(scroll-bar-mode)
+(scroll-bar-mode 0)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
