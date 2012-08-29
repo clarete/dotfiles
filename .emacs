@@ -168,6 +168,9 @@
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+;; Muttrc mode
+(require 'muttrc-mode)
+
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
