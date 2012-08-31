@@ -174,6 +174,10 @@
 ;; Muttrc mode
 (require 'muttrc-mode)
 
+;; Esk search!
+(add-to-list 'load-path "~/.emacs.d/elisp/esk")
+(require 'esk)
+
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
