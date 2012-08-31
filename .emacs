@@ -177,6 +177,8 @@
 ;; Esk search!
 (add-to-list 'load-path "~/.emacs.d/elisp/esk")
 (require 'esk)
+(global-set-key "\M-s" 'esk-find-file)
+
 
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
