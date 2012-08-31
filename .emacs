@@ -179,6 +179,8 @@
 (require 'esk)
 (global-set-key "\M-s" 'esk-find-file)
 
+;; Magit!
+(require 'magit)
 
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
