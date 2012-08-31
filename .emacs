@@ -182,6 +182,21 @@
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
+;; -- Pyflakes stuff --
+(require 'flymake-cursor)
+
+(defun flymake-pyflakes-init ()
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list "pyflakes" (list local-file))))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(add-to-list 'flymake-allowed-file-name-masks
+             '("\\.py\\'" flymake-pyflakes-init))
+
 ;; Personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
