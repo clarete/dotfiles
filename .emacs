@@ -201,6 +201,19 @@
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.py\\'" flymake-pyflakes-init))
 
+
+;; Customizing colors used in diff mode
+(defun custom-diff-colors ()
+  "update the colors for diff faces"
+  (set-face-attribute
+   'diff-added nil :foreground "green")
+  (set-face-attribute
+   'diff-removed nil :foreground "red")
+  (set-face-attribute
+   'diff-changed nil :foreground "purple"))
+
+(eval-after-load "diff-mode" '(custom-diff-colors))
+
 ;; Personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
