@@ -181,6 +181,7 @@
 
 ;; Magit!
 (require 'magit)
+(global-set-key [(ctrl c) (g)] 'magit-status)
 
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
