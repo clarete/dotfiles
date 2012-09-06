@@ -62,10 +62,8 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Better use the default C-x *left* and C-x *right*
-;(global-set-key [(meta next)]  'next-buffer)
-;(global-set-key [(meta prior)] 'previous-buffer)
-;; (global-set-key "\M-\C-n" 'next-buffer)
-;; (global-set-key "\M-\C-p" 'previous-buffer)
+(global-set-key [(ctrl <)] 'next-multiframe-window)
+(global-set-key [(ctrl >)] 'previous-multiframe-window)
 
 ; clipboard
 (setq x-select-enable-clipboard t)
