@@ -182,6 +182,7 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/esk")
 (require 'esk)
 (global-set-key "\M-s" 'esk-find-file)
+(global-set-key "\M-\S-s" 'esk-find-in-project)
 
 ;; Magit!
 (require 'magit)
