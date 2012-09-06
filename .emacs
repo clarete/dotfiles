@@ -171,6 +171,10 @@
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+;; Yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 ;; Muttrc mode
 (require 'muttrc-mode)
 
