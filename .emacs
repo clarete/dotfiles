@@ -70,6 +70,12 @@
 ; clipboard
 (setq x-select-enable-clipboard t)
 
+;; Reloading the buffer instead of pissing me off with "what should I
+;; do" questions
+(defun ask-user-about-supersession-threat (filename)
+  (revert-buffer t t)
+  (message "This buffer was refreshed due to external changes"))
+
 ;; ---- key bindings ---
 
 ;; comments
