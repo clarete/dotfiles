@@ -86,8 +86,8 @@
 (global-set-key [(meta p)] '(lambda () (interactive) (scroll-down 1)))
 
 ;; scrolling other window
-(global-set-key [(meta k)] 'scroll-other-window)
-(global-set-key [(meta j)] 'scroll-other-window-down)
+(global-set-key [(meta j)] '(lambda () (interactive) (scroll-other-window 1)))
+(global-set-key [(meta k)] '(lambda () (interactive) (scroll-other-window -1)))
 
 ;; Mac specific stuff
 (when (eq system-type 'darwin)
