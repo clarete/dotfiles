@@ -183,7 +183,7 @@
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 
-;; -- Pyflakes stuff --
+;; Pyflakes stuff
 (require 'flymake-cursor)
 (defun flymake-pyflakes-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -207,10 +207,9 @@
    'diff-removed nil :foreground "red")
   (set-face-attribute
    'diff-changed nil :foreground "purple"))
-
 (eval-after-load "diff-mode" '(custom-diff-colors))
 
-;; Personal snippets
+;; Loading YAS personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
 
