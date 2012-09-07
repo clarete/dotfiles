@@ -61,10 +61,6 @@
 ;; spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
-;; Better use the default C-x *left* and C-x *right*
-(global-set-key [(ctrl <)] 'next-multiframe-window)
-(global-set-key [(ctrl >)] 'previous-multiframe-window)
-
 ; clipboard
 (setq x-select-enable-clipboard t)
 
@@ -80,17 +76,18 @@
 (global-set-key [(ctrl c) (c)] 'comment-region)
 (global-set-key [(ctrl c) (d)] 'uncomment-region)
 
-;; scrolling
+;; moving from one window to another
+(global-set-key [(ctrl <)] 'next-multiframe-window)
+(global-set-key [(ctrl >)] 'previous-multiframe-window)
+(global-set-key [C-tab] 'other-window)
 
-(defun gcm-scroll-down ()
-  (interactive)
-  (scroll-up 1))
-(defun gcm-scroll-up ()
-  (interactive)
-  (scroll-down 1))
+;; scrolling without changing the cursor
+(global-set-key [(meta n)] '(lambda () (interactive) (scroll-up 1)))
+(global-set-key [(meta p)] '(lambda () (interactive) (scroll-down 1)))
 
-(global-set-key [(meta n)] 'gcm-scroll-down)
-(global-set-key [(meta p)] 'gcm-scroll-up)
+;; scrolling other window
+(global-set-key [(meta k)] 'scroll-other-window)
+(global-set-key [(meta j)] 'scroll-other-window-down)
 
 ;; Mac specific stuff
 (when (eq system-type 'darwin)
@@ -98,16 +95,6 @@
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   (menu-bar-mode 1))
-
-;; scrolling other window
-;(global-set-key "\M-\C-n" 'scroll-other-window)
-;(global-set-key "\M-\C-p" 'scroll-other-window-down)
-
-;; new window
-;(global-set-key "\C-x\C-n"  'make-frame)
-
-;; other window
-;(global-set-key [C-tab] 'other-window)
 
 ;; Adding marmalade as a repo to the package module
 (require 'package)
