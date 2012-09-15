@@ -175,9 +175,9 @@
 (global-set-key "\M-s" 'esk-find-file)
 (global-set-key "\M-\S-s" 'esk-find-in-project)
 
-;; Magit!
-(require 'magit)
-(global-set-key [(ctrl c) (g)] 'magit-status)
+;; Some git shortcuts
+(defun git () (interactive) (magit-status "."))
+(defun git-blame () (interactive) (mo-git-blame-current))
 
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
