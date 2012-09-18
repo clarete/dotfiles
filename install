@@ -19,6 +19,7 @@ AVOID_LIST = (
     'requirements.pip',
     '.git',
     '.gitignore',
+    '.gitmodule',
 )
 
 
