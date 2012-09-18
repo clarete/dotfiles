@@ -213,5 +213,8 @@
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
 
+;; Loading some custom functions after loading everything else
+(load "~/.emacs.d/defuns.el")
+
 ;; Enabling the server mode by default
 (server-mode)
