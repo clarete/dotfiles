@@ -23,6 +23,7 @@ fi
 ulimit -c unlimited
 
 # General stuff
+export EMAIL='lincoln@comum.org'
 export PS1='\[\033[01;32m\]\u@yipster\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 
 # Python
