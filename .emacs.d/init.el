@@ -209,6 +209,9 @@
    'diff-changed nil :foreground "purple"))
 (eval-after-load "diff-mode" '(custom-diff-colors))
 
+;; A simple way to insert license headers
+(require 'xlicense)
+
 ;; Loading YAS personal snippets
 (setq yas/root-directory "~/.emacs.d/snippets")
 (yas/load-directory yas/root-directory)
