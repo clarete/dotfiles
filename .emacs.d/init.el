@@ -64,6 +64,9 @@
 ; clipboard
 (setq x-select-enable-clipboard t)
 
+;; Whitespaces
+(setq show-trailing-whitespace t)
+
 ;; Reloading the buffer instead of pissing me off with "what should I
 ;; do" questions
 (defun ask-user-about-supersession-threat (filename)
