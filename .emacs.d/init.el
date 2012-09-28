@@ -1,5 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+;; Basic config for columns
 (column-number-mode)
 (setq fill-column 59)
 (setq-default fill-column 72)
@@ -61,7 +62,7 @@
 ;; spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
-; clipboard
+;; clipboard
 (setq x-select-enable-clipboard t)
 
 ;; Whitespaces
