@@ -62,6 +62,9 @@
 ;; spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
+;; Do not wrap lines
+(setq-default truncate-lines t)
+
 ;; clipboard
 (setq x-select-enable-clipboard t)
 
