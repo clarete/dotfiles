@@ -118,6 +118,11 @@
 
 ;; Mode Configuration
 
+;; html mode
+(add-hook 'html-mode-hook
+          (lambda()
+            (setq sgml-basic-offset 4)))
+
 ;; css config
 (setq cssm-indent-function #'cssm-c-style-indenter)
 (setq cssm-indent-level 4)
