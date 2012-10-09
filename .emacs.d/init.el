@@ -181,6 +181,9 @@
 ;; Muttrc mode
 (require 'muttrc-mode)
 
+;; Nginx
+(add-to-list 'auto-mode-alist '("nginx.conf$" . nginx-mode))
+
 ;; Esk search!
 (add-to-list 'load-path "~/.emacs.d/elisp/esk")
 (require 'esk)
