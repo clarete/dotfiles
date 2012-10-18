@@ -1,5 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+;; utf-8 for good
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
 ;; Basic config for columns
 (column-number-mode)
 (setq fill-column 59)
