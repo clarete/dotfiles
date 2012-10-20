@@ -1,3 +1,9 @@
+;; No bars. Doing this first to avoid showing/hidding delay on startup
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+
+;; Adding my default elisp package path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;; utf-8 for good
@@ -41,11 +47,6 @@
 ;;; Also highlight parens
 (setq show-paren-delay 0 show-paren-style 'parenthesis)
 (show-paren-mode 1)
-
-;; no bars
-(scroll-bar-mode 0)
-(menu-bar-mode 0)
-(tool-bar-mode 0)
 
 ;; highlight mark region
 (transient-mark-mode 1)
