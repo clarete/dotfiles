@@ -20,6 +20,7 @@ AVOID_LIST = (
     '.git',
     '.gitignore',
     '.gitmodule',
+    'README.md',
 )
 
 
