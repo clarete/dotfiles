@@ -1,0 +1,17 @@
+# -*- Mode: conf -*-
+
+# bitches loves utf-8
+defutf8 on
+defencoding UTF-8
+setenv LC_CTYPE en_US.UTF-8
+
+# Nice status bar
+hardstatus alwayslastline
+hardstatus string "%{k2} %-w%{= kW} %n %t %{-}%{= gk}%+w%{-}%> %="
+
+# Further stuff
+multiuser on
+acladd lincoln
+defscrollback 100000
+startup_message off
+shell -${SHELL}
