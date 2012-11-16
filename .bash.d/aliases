@@ -1,6 +1,6 @@
 # -*- Mode: shell-script; -*-
 
 alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -lA'
+alias ll='ls -l'
 alias edit="emacsclient -t"
 alias ack='ack --pager="less -FRSX"'
