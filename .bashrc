@@ -35,7 +35,7 @@ export PIP_RESPECT_VIRTUALENV=true
 
 # Yipit
 export YIPIT_PATH=$HOME/Work/Yipit/yipit
-source ${YIPIT_PATH}/conf/yipit_bash_profile
+[[ -s "${YIPIT_PATH}/conf/yipit_bash_profile" ]] && source "${YIPIT_PATH}/conf/yipit_bash_profile"
 
 # Ruby stuff, Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
