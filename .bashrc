@@ -18,6 +18,7 @@ fi
 
 # Loading specific things depending on our platform
 [ "`uname`" = "Darwin" ] && . $HOME/.bash.d/mac
+[ "`uname -o`" = "GNU/Linux" ] && . $HOME/.bash.d/gnu-linux
 
 # I want to know when things break!
 ulimit -c unlimited
