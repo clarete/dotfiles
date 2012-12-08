@@ -7,11 +7,12 @@ import os
 import sys
 import argparse
 import shutil
-import couleur
 
-
-# I love this API :)
-couleur.proxy(sys.stdout).enable()
+try:
+    import couleur
+    couleur.proxy(sys.stdout).enable()
+except ImportError:
+    pass
 
 
 AVOID_LIST = (
