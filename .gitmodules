@@ -1,3 +1,6 @@
 [submodule ".emacs.d/elisp/esk"]
 	path = .emacs.d/elisp/esk
 	url = git@github.com:clarete/emacs-search-kit.git
+[submodule ".emacs.d/elisp/web-mode"]
+	path = .emacs.d/elisp/web-mode
+	url = https://github.com/fxbois/web-mode.git
