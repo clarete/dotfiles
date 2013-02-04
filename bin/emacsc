@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This is the emacs client I use, instead of calling emacs directly,
+# cause I'm using the server mode.
+#
+# The trick here is the usage of the `-a` parameter, it sets the
+# "alternative" editor if the client fails. This way, when I call it
+# without an emacs server, the client itself will take care of spawning
+# a new one.
+
+exec emacsclient -c -a emacs $@

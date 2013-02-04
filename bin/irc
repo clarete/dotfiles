@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# This is my irssi launcher. It exports two environment variables
+# required to launch `irssi`.
+#
+# It's not the smartest way to pass passwords around, so make sure you
+# won't run any malicious code that reads this variable and gets your
+# password. Usually, I call this script just once in a month (when I
+# accidentally reboot my computer) and I don't run any other thing in
+# the same terminal.
+
+export IRC_NICK=clarete
+
+if [ "`uname`" == "Darwin" ]; then
+    # Make sure you have the entry "org.comum.lincoln.conf.irc.freenode"
+    # before complaining that this shit does not work.
+    export IRC_PASSWORD=`security find-generic-password -wgs org.comum.lincoln.conf.irc.freenode | tr -d '\n'`
+else
+    echo "F*ck! I don't know how to retrieve the irc password"
+    return 1
+fi
+
+exec irssi

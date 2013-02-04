@@ -16,6 +16,9 @@ if [ -f ~/.bash.d/aliases ]; then
     . ~/.bash.d/aliases
 fi
 
+# Adding my custom path directory
+PATH="$HOME/bin:$PATH"
+
 # Loading specific things depending on our platform
 [ "`uname`" = "Darwin" ] && . $HOME/.bash.d/mac
 [ "`uname -o`" = "GNU/Linux" ] && . $HOME/.bash.d/gnu-linux
