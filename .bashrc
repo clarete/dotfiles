@@ -29,7 +29,7 @@ ulimit -c unlimited
 # General stuff
 export EMAIL='lincoln@comum.org'
 export EDITOR="emacsc"
-export PS1='\[\033[01;32m\]\u@yipster\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -37,13 +37,12 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
-# Yipit
-export YIPIT_PATH=$HOME/Work/Yipit/yipit
-[[ -s "${YIPIT_PATH}/conf/yipit_bash_profile" ]] && source "${YIPIT_PATH}/conf/yipit_bash_profile"
-
 # Ruby stuff, Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# Setting the path
-PATH="$HOME/bin:$PATH"
+# Exporting the PATH before loading the custom scripts.
 export PATH
+
+# Loading custom scripts
+source $HOME/.bash.d/custom.d/*.sh
