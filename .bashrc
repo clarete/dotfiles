@@ -33,7 +33,7 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
@@ -45,4 +45,4 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH
 
 # Loading custom scripts
-source $HOME/.bash.d/custom.d/*.sh
+for i in $HOME/.bash.d/custom.d/*.sh; do . $i; done
