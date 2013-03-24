@@ -38,7 +38,7 @@
 (eval-after-load "color-theme"
  '(progn
     (color-theme-initialize)
-    (color-theme-tty-dark)))
+    (color-theme-lincoln)))
 
 ;; ssh and local sudo/su
 (require 'tramp)
