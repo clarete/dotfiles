@@ -3,10 +3,14 @@
 	email = lincoln@comum.org
 [color]
 	ui = auto
-
 [push]
         default = current
 [branch]
 	autosetuprebase = always
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[github]
+    user = clarete
+    password = !security find-generic-password -wgs org.comum.lincoln.conf.github | tr -d '\n'
+[credential]
+    helper = osxkeychain
