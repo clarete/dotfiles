@@ -22,9 +22,12 @@
 ;; No backup files
 (setq make-backup-files nil)
 
-;; splash screen
+;; No splash screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-screen t)
+
+;; No f*cking bell
+(setq ring-bell-function 'ignore)
 
 ;; encoding
 (setq current-language-environment "UTF-8")
