@@ -4,6 +4,7 @@
 PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/share/python:$PATH"
+PATH="/usr/local/share/npm/bin:$PATH"
 PATH="/Applications/Emacs.app/Contents/MacOs/bin:$PATH"
 
 # enable programmable completion features (you don't need to enable
