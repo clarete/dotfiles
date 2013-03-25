@@ -69,8 +69,6 @@
 ;; scroll smoothly
 (setq scroll-conservatively 10000)
 
-(put 'upcase-region 'disabled nil)
-
 ;; spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
