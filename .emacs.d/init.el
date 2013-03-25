@@ -3,6 +3,17 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
+;; Adding marmalade as a repo to the package module. Also, we can't
+;; configure any package before requiring `package.el`
+(require 'package)
+(add-to-list
+ 'package-archives
+ '("marmalade" .
+   "http://marmalade-repo.org/packages/")
+ '("melpa" .
+   "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
 ;; Adding my default elisp package path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
@@ -17,7 +28,7 @@
 ;; Basic config for columns
 (column-number-mode)
 (setq fill-column 59)
-(setq-default fill-column 72)
+(setq-default fill-column 79)
 
 ;; No backup files
 (setq make-backup-files nil)
@@ -61,6 +72,13 @@
 
 ;; There's no place like home
 (setq default-directory "~/")
+
+;; Show a line at 79 chars
+(setq fci-rule-width 1)
+(setq fci-rule-color "#333333")
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;; show line numbers
 (require 'linum)
@@ -110,18 +128,9 @@
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  ;; sets fn-delete to be right-delete
+  (global-set-key [kp-delete] 'delete-char)
   (menu-bar-mode 1))
-
-;; Adding marmalade as a repo to the package module
-(require 'package)
-(add-to-list
- 'package-archives
- '("marmalade" .
-   "http://marmalade-repo.org/packages/")
- '("melpa" .
-   "http://melpa.milkbox.net/packages/"))
-(package-initialize)
 
 ;; mutt
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
