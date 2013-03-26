@@ -6,7 +6,7 @@
   (interactive)
   (color-theme-install
    '(color-theme-lincoln
-      ((background-color . "#010204")
+      ((background-color . "#242628")
       (background-mode . light)
       (border-color . "#1a1a1a")
       (cursor-color . "#fce94f")

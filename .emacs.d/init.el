@@ -114,7 +114,7 @@
 ;; moving from one window to another
 (global-set-key [(ctrl <)] 'next-multiframe-window)
 (global-set-key [(ctrl >)] 'previous-multiframe-window)
-(global-set-key [C-tab] 'other-window)
+;; (global-set-key [C-tab] 'other-window)
 
 ;; scrolling without changing the cursor
 (global-set-key [(meta n)] '(lambda () (interactive) (scroll-up 1)))
@@ -248,6 +248,12 @@
                '("\\.py\\'" flymake-pyflakes-init)))
 (setq flymake-gui-warnings-enabled nil)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+;; More python stuff
+(add-to-list 'load-path "~/.emacs.d/elisp/emacs-jedi")
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
 
 ;; Customizing colors used in diff mode
 (defun custom-diff-colors ()

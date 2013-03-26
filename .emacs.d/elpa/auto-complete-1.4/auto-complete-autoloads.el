@@ -3,8 +3,11 @@
 ;;; Code:
 
 
-;;;### (autoloads nil nil ("auto-complete-config.el" "auto-complete-pkg.el"
-;;;;;;  "auto-complete.el") (20541 39379 786356))
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/elpa/auto-complete-1.4/auto-complete-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/auto-complete-1.4/auto-complete-config.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/auto-complete-1.4/auto-complete-pkg.el"
+;;;;;;  "../../../../../../.emacs.d/elpa/auto-complete-1.4/auto-complete.el")
+;;;;;;  (20815 45658 393137))
 
 ;;;***
 
