@@ -168,7 +168,13 @@
   "Hooks for Web mode."
   (setq web-mode-markup-indent-offset 4)
   (setq web-mode-css-indent-offset 4)
-  (setq web-mode-code-indent-offset 4))
+  (setq web-mode-code-indent-offset 4)
+  (set-face-attribute 'web-mode-doctype-face nil :foreground
+                      (face-foreground font-lock-function-name-face))
+  (set-face-attribute 'web-mode-html-attr-name-face nil :foreground
+                      (face-foreground font-lock-variable-name-face))
+  (set-face-attribute 'web-mode-html-attr-value-face nil :foreground
+                      (face-foreground font-lock-type-face)))
 (add-hook 'web-mode-hook  'web-mode-hook)
 
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
@@ -231,6 +237,10 @@
 ;; Configuring the dropdown list, submodule used by yasnippet
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
+(defun yas-web-mode-fix ()
+  (insert "\t")
+  (indent-for-tab-command))
+(setq yas/after-exit-snippet-hook 'yas-web-mode-fix)
 
 ;; Pyflakes stuff
 (require 'flymake-cursor)
