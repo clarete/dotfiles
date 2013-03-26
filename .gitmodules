@@ -4,3 +4,6 @@
 [submodule ".emacs.d/elisp/web-mode"]
 	path = .emacs.d/elisp/web-mode
 	url = https://github.com/fxbois/web-mode.git
+[submodule ".emacs.d/elisp/emacs-jedi"]
+	path = .emacs.d/elisp/emacs-jedi
+	url = git://github.com/tkf/emacs-jedi.git
