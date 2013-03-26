@@ -76,9 +76,7 @@
 ;; Show a line at 79 chars
 (setq fci-rule-width 1)
 (setq fci-rule-color "#333333")
-(define-globalized-minor-mode global-fci-mode fci-mode
-  (lambda () (fci-mode 1)))
-(global-fci-mode 1)
+(add-hook 'python-mode-hook 'fci-mode)
 
 ;; show line numbers
 (require 'linum)
