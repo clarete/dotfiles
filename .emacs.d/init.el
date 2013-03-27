@@ -238,8 +238,13 @@
 (require 'dropdown-list)
 (setq yas/prompt-functions '(yas/dropdown-prompt))
 (defun yas-web-mode-fix ()
-  (insert "\t")
-  (indent-for-tab-command))
+  (web-mode-insert-and-indent "\t")
+  (indent-for-tab-command)
+  (save-excursion
+    (web-mode-tag-end)
+    (indent-for-tab-command))
+  (if (not (string-match "\\`[ \t\n\r]+$" (thing-at-point 'line)))
+      (delete-horizontal-space)))
 (setq yas/after-exit-snippet-hook 'yas-web-mode-fix)
 
 ;; Pyflakes stuff
