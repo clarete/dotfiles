@@ -9,6 +9,7 @@
 	autosetuprebase = always
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        sync = !git pull && git push
 [github]
     user = clarete
     password = !security find-generic-password -wgs org.comum.lincoln.conf.github | tr -d '\n'
