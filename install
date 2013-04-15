@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # Author:: Lincoln Clarete <lincoln@comum.org>
 # Copyright:: Copyright (c) 2013, Lincoln Clarete
 # 
@@ -25,9 +27,6 @@
 # sale, use or other dealings in this Software without prior written
 # authorization.
 
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """Small tool to install links for my dotfiles
 """
 
