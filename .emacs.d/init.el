@@ -17,9 +17,10 @@
 ;; Adding my default elisp package path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-;; utf-8 for good
+;; utf-8 for good (is there any other encoding related var I could set?)
 (prefer-coding-system 'utf-8)
 (setq locale-coding-system 'utf-8)
+(setq current-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -27,8 +28,14 @@
 
 ;; Basic config for columns
 (column-number-mode)
-(setq fill-column 59)
-(setq-default fill-column 79)
+
+;; setting up a color theme
+(add-to-list 'load-path "~/.emacs.d/elisp/color-theme")
+(require 'color-theme)
+(eval-after-load "color-theme"
+ '(progn
+    (color-theme-initialize)
+    (color-theme-lincoln)))
 
 ;; No backup files
 (setq make-backup-files nil)
@@ -39,20 +46,6 @@
 
 ;; No f*cking bell
 (setq ring-bell-function 'ignore)
-
-;; encoding
-(setq current-language-environment "UTF-8")
-
-;; setting up a color theme
-(add-to-list 'load-path "~/.emacs.d/elisp/color-theme")
-(require 'color-theme)
-(eval-after-load "color-theme"
- '(progn
-    (color-theme-initialize)
-    (color-theme-lincoln)))
-
-;; ssh and local sudo/su
-(require 'tramp)
 
 ;; Always do syntax highlighting
 (global-font-lock-mode 1)
@@ -73,10 +66,15 @@
 ;; There's no place like home
 (setq default-directory "~/")
 
-;; Show a line at 79 chars
-(setq fci-rule-width 1)
-(setq fci-rule-color "#333333")
-(add-hook 'python-mode-hook 'fci-mode)
+;; Set up a 79-column rule
+(setq-default fill-column 79)
+(add-to-list 'load-path "~/.emacs.d/elisp/fill-column-indicator")
+(require 'fill-column-indicator)
+(setq fci-style 'rule)
+(setq fci-rule-color "#33333")
+(define-globalized-minor-mode global-fci-mode fci-mode
+  (lambda () (fci-mode t)))
+(global-fci-mode t)
 
 ;; show line numbers
 (require 'linum)
@@ -109,10 +107,16 @@
 (global-set-key [(ctrl c) (c)] 'comment-region)
 (global-set-key [(ctrl c) (d)] 'uncomment-region)
 
+;; join lines
+(global-set-key [(ctrl J)] '(lambda () (interactive) (join-line -1)))
+
 ;; moving from one window to another
 (global-set-key [(ctrl <)] 'next-multiframe-window)
 (global-set-key [(ctrl >)] 'previous-multiframe-window)
-;; (global-set-key [C-tab] 'other-window)
+
+;; moving from one frame to another
+(global-set-key [(C-tab)] 'other-window)
+(global-set-key [(shift C-tab)] '(lambda () (interactive) (other-window -1)))
 
 ;; scrolling without changing the cursor
 (global-set-key [(meta n)] '(lambda () (interactive) (scroll-up 1)))
@@ -130,27 +134,41 @@
   (global-set-key [kp-delete] 'delete-char)
   (menu-bar-mode 1))
 
-;; mutt
+;; ssh and local sudo/su
+(require 'tramp)
+
+;; mutt and muttrc modes
+(require 'muttrc-mode)
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
-;; Mode Configuration
+;; A simple way to insert license headers
+(require 'xlicense)
+
+;; lua mode
+(require 'lua-mode)
+
+;; yaml
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; nginx
+(add-to-list 'auto-mode-alist '("nginx.conf$" . nginx-mode))
 
 ;; html mode
-(add-hook 'html-mode-hook
-          (lambda()
-            (setq sgml-basic-offset 4)))
+(add-hook 'html-mode-hook (lambda() (setq sgml-basic-offset 4)))
 
 ;; css config
 (setq cssm-indent-function #'cssm-c-style-indenter)
 (setq cssm-indent-level 4)
 
-;; javascript config
-(setq js2-consistent-level-indent-inner-bracket-p 1)
-(setq js2-pretty-multiline-decl-indentation-p 1)
+;; javascript
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq js2-consistent-level-indent-inner-bracket-p 1)
+(setq js2-pretty-multiline-decl-indentation-p 1)
+(setq js2-bounce-indent-p t)
 
-;; sass and haml mode
+;; sass mode
 (require 'sass-mode)
 (add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . sass-mode))
@@ -189,15 +207,12 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
 (add-hook 'markdown-mode-hook '(lambda() (flyspell-mode)))
 
-;; vala mode
+;; Vala mode
 (autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
 (add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
-
-;; lua mode
-(require 'lua-mode)
 
 ;; CoffeScript mode
 (require 'coffee-mode)
@@ -209,20 +224,20 @@
 
 ;; Auto complete
 (require 'auto-complete)
+(require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq ac-dwim 2)
+(ac-config-default)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
-;; Yaml
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;; Loading YAS personal snippets
+(setq yas/root-directory "~/.emacs.d/snippets")
+(yas/load-directory yas/root-directory)
 
-;; Muttrc mode
-(require 'muttrc-mode)
-
-;; Nginx
-(add-to-list 'auto-mode-alist '("nginx.conf$" . nginx-mode))
+;; Configuring the dropdown list, submodule used by yasnippet
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt))
 
 ;; Esk search!
 (add-to-list 'load-path "~/.emacs.d/elisp/esk")
@@ -234,18 +249,14 @@
 (defun git () (interactive) (magit-status "."))
 (defun git-blame () (interactive) (mo-git-blame-current))
 
-;; Configuring the dropdown list, submodule used by yasnippet
-(require 'dropdown-list)
-(setq yas/prompt-functions '(yas/dropdown-prompt))
-(defun yas-web-mode-fix ()
-  (web-mode-insert-and-indent "\t")
-  (indent-for-tab-command)
-  (save-excursion
-    (web-mode-tag-end)
-    (indent-for-tab-command))
-  (if (not (string-match "\\`[ \t\n\r]+$" (thing-at-point 'line)))
-      (delete-horizontal-space)))
-(setq yas/after-exit-snippet-hook 'yas-web-mode-fix)
+;; Python stuff
+;; ------------
+
+;; Jedi mode for python. $ pip install jedi epc
+(add-to-list 'load-path "~/.emacs.d/elisp/emacs-jedi")
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys nil)  ;; TODO: bind jedi stuff to some nice shortcuts
 
 ;; Pyflakes stuff
 (require 'flymake-cursor)
@@ -262,12 +273,6 @@
 (setq flymake-gui-warnings-enabled nil)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-;; More python stuff
-(add-to-list 'load-path "~/.emacs.d/elisp/emacs-jedi")
-(autoload 'jedi:setup "jedi" nil t)
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
-
 ;; Customizing colors used in diff mode
 (defun custom-diff-colors ()
   "update the colors for diff faces"
@@ -278,13 +283,6 @@
   (set-face-attribute
    'diff-changed nil :foreground "purple"))
 (eval-after-load "diff-mode" '(custom-diff-colors))
-
-;; A simple way to insert license headers
-(require 'xlicense)
-
-;; Loading YAS personal snippets
-(setq yas/root-directory "~/.emacs.d/snippets")
-(yas/load-directory yas/root-directory)
 
 ;; Loading some custom functions after loading everything else
 (load "~/.emacs.d/defuns.el")
