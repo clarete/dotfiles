@@ -21,7 +21,7 @@ PATH="$HOME/bin:$PATH"
 
 # Loading specific things depending on our platform
 [ "`uname`" = "Darwin" ] && . $HOME/.bash.d/mac
-[ "`uname -o`" = "GNU/Linux" ] && . $HOME/.bash.d/gnu-linux
+[ "`uname -o 2>/dev/null`" = "GNU/Linux" ] && . $HOME/.bash.d/gnu-linux
 
 # I want to know when things break!
 ulimit -c unlimited
@@ -32,9 +32,9 @@ export EDITOR="emacsc"
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 
 # Python
-export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/share/python/virtualenv'
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute'
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs"
 export PIP_RESPECT_VIRTUALENV=true
 
 # Ruby stuff, Load RVM into a shell session *as a function*
