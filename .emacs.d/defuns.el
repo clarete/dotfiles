@@ -24,3 +24,10 @@ please, be careful, once called, it can't be stopped!"
                (revert-buffer 1 1))
              (kill-buffer b))
           (buffer-list)))
+
+
+(defun open-current-file-in-finder ()
+  "Opens the current file using the Mac OS `open` utility"
+  (interactive)
+  (message (shell-command-to-string
+            (concat "open " (buffer-file-name)))))
