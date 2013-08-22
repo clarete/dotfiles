@@ -1,0 +1,33 @@
+# -*- Mode: conf-unix; -*-
+
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Basic stuff
+bind g:t,ctrl hint
+bind r:t,ctrl relaunch
+bind u:t,ctrl undo
+
+# Fullscreen
+bind f:t,ctrl              move screenOriginX;screenOriginY screenSizeX;screenSizeY
+
+# Center
+bind c:t,ctrl              move (screenSizeX/2)-(newWindowSizeX/2);(screenSizeY/2)-(newWindowSizeY/2) screenSizeX/1.5;screenSizeY/1.5
+
+# Move window to screen corners
+bind left:ctrl;alt         corner top-left resize:screenSizeX/2;screenSizeY/2
+bind right:ctrl;alt        corner top-right resize:screenSizeX/2;screenSizeY/2
+bind left:ctrl;alt;shift   corner bottom-left resize:screenSizeX/2;screenSizeY/2
+bind right:ctrl;alt;shift  corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+# Push Bindings
+bind w:ctrl;cmd      push top    center
+bind right:ctrl;cmd  push right  bar-resize:screenSizeX/2
+bind left:ctrl;cmd   push left   bar-resize:screenSizeX/2
+bind up:ctrl;cmd     push up     bar-resize:screenSizeY/2
+bind down:ctrl;cmd   push down   bar-resize:screenSizeY/2
+
+# Throwing from one screen to another
+bind left:ctrl;shift   throw 0
+bind right:ctrl;shift  throw 1
