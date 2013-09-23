@@ -24,3 +24,7 @@ the `--help` flag to define where your files are going to be saved.
 
 If you don't trust my script, you can just copy the files that you want
 to your home folder or symlink them.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/clarete/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
