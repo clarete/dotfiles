@@ -285,6 +285,15 @@
    'diff-changed nil :foreground "purple"))
 (eval-after-load "diff-mode" '(custom-diff-colors))
 
+;; Changing the frame title to show my host name and full path of file open on
+;; the current buffer
+(setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+
 ;; Loading some custom functions after loading everything else
 (load "~/.emacs.d/defuns.el")
 
