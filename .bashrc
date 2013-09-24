@@ -3,6 +3,7 @@
 
 # force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
+export HISTSIZE=99999999999999
 
 # append to the history file, don't overwrite it
 shopt -s histappend
