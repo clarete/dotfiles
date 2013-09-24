@@ -28,7 +28,6 @@ chatnets = {
 };
 
 channels = (
-  { name = "#guake"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#meteor"; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#yipit"; chatnet = "Freenode"; autojoin = "yes"; }
 );
