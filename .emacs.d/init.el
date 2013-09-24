@@ -248,6 +248,11 @@
 ;; Python stuff
 ;; ------------
 
+;; Lambda
+(require 'lambda-mode)
+(add-hook 'python-mode-hook #'lambda-mode 1)
+(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
+
 ;; Jedi mode for python. $ pip install jedi epc
 (add-to-list 'load-path "~/.emacs.d/elisp/emacs-jedi")
 (autoload 'jedi:setup "jedi" nil t)
