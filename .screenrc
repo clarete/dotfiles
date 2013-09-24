@@ -8,7 +8,7 @@ setenv LC_CTYPE en_US.UTF-8
 # Nice status bar with a unicode heart, you need to have a fresh screen
 # installation, otherwise it will look ugly
 hardstatus alwayslastline
-hardstatus string "%{k2} %-w%{=b rW} ♥ %t %{-}%{= gk}%+w%{-}%> %="
+hardstatus string "%{kK} %-w%{=b ky} 䔬%t %{-}%{= Kk}%+w%{-}%> %="
 
 # Further stuff
 multiuser on
