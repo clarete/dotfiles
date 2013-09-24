@@ -239,6 +239,7 @@
 (require 'esk)
 (global-set-key "\M-s" 'esk-find-file)
 (global-set-key "\M-\S-s" 'esk-find-in-project)
+(setq esk-find-binary "gfind")
 
 ;; Some git shortcuts
 (defun git () (interactive) (magit-status "."))
