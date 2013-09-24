@@ -14,6 +14,9 @@
    "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
+;; setting up a color theme
+(require 'monokai-theme)
+
 ;; Adding my default elisp package path
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
@@ -28,14 +31,6 @@
 
 ;; Basic config for columns
 (column-number-mode)
-
-;; setting up a color theme
-(add-to-list 'load-path "~/.emacs.d/elisp/color-theme")
-(require 'color-theme)
-(eval-after-load "color-theme"
- '(progn
-    (color-theme-initialize)
-    (color-theme-lincoln)))
 
 ;; No backup files
 (setq make-backup-files nil)
