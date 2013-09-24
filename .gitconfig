@@ -15,3 +15,7 @@
     password = !security find-generic-password -wgs org.comum.lincoln.conf.github | tr -d '\n'
 [credential]
     helper = osxkeychain
+[hub]
+	protocol = https
+[rerere]
+	enabled = true
