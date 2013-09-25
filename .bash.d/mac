@@ -16,8 +16,6 @@ fi
 
 # Python
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-. /usr/local/share/python/virtualenvwrapper.sh
 
 # Mac aliases, I'm not polutting my main bash profile with this mac
 # stuff!
