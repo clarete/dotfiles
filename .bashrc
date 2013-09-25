@@ -55,6 +55,10 @@ export PIP_RESPECT_VIRTUALENV=true
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+# Go
+export GOPATH=${HOME}/Work/go
+PATH=${PATH}:${GOPATH}/bin
+
 # Exporting the PATH before loading the custom scripts.
 export PATH
 
