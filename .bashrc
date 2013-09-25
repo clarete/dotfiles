@@ -3,7 +3,7 @@
 
 # force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
-export HISTSIZE=99999999999999
+export HISTSIZE=1000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -30,9 +30,22 @@ ulimit -c unlimited
 # General stuff
 export EMAIL='lincoln@comum.org'
 export EDITOR="emacsc"
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+
+# PS1, yeah it's a big deal!
+function __ps1() {
+    echo -en "\033[00;33m"
+    [ -n "$VIRTUAL_ENV" ] && echo -n "($(basename $VIRTUAL_ENV)) "
+
+    echo -en "\033[00;32m"
+    local git=$(__git_ps1 "%s")
+    [ -n "$git" ] && echo -n "$git "
+}
+
+# This same line is repeated in the file ~/.virtualenvs/postactivate
+export PS1='$(__ps1)\[\033[01;30m\]\w \$\[\033[00m\] '
 
 # Python
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUALENVWRAPPER_VIRTUALENV='/usr/local/share/python/virtualenv'
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute'
 export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs"
