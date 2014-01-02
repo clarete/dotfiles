@@ -45,12 +45,14 @@ function __ps1() {
 export PS1='$(__ps1)\[\033[01;30m\]\w \$\[\033[00m\] '
 
 # Python
-source $(which virtualenvwrapper.sh)
-export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)"
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute'
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs"
-export PIP_RESPECT_VIRTUALENV=true
+which virtualenvwrapper.sh && {
+  source $(which virtualenvwrapper.sh);
+  export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)";
+  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute';
+  export VIRTUAL_ENV_DISABLE_PROMPT=1;
+  export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs";
+  export PIP_RESPECT_VIRTUALENV=true
+}
 
 # Ruby stuff, Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
