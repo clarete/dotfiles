@@ -61,16 +61,6 @@
 ;; There's no place like home
 (setq default-directory "~/")
 
-;; Set up a 79-column rule
-(setq-default fill-column 79)
-(add-to-list 'load-path "~/.emacs.d/elisp/fill-column-indicator")
-(require 'fill-column-indicator)
-(setq fci-style 'rule)
-(setq fci-rule-color "#33333")
-(define-globalized-minor-mode global-fci-mode fci-mode
-  (lambda () (fci-mode t)))
-(global-fci-mode t)
-
 ;; show line numbers
 (require 'linum)
 (global-linum-mode 1)
