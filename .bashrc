@@ -39,10 +39,10 @@ function __ps1() {
 }
 
 # This same line is repeated in the file ~/.virtualenvs/postactivate
-export PS1='$(__ps1)\[\033[01;30m\]\w \$\[\033[00m\] '
+export PS1='$(__ps1)\[\033[31;1m\]♡  \[\033[01;30m\]$(basename $(pwd)) \$\[\033[00m\] '
 
 # Python
-which virtualenvwrapper.sh && {
+which virtualenvwrapper.sh &>/dev/null && {
   source $(which virtualenvwrapper.sh);
   export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)";
   export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute';
@@ -53,6 +53,7 @@ which virtualenvwrapper.sh && {
 
 # Adding my custom path directory
 PATH="$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 # Ruby stuff, Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -67,3 +68,6 @@ export PATH
 
 # Loading custom scripts
 for i in $HOME/.bash.d/custom.d/*.sh; do . $i; done
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
