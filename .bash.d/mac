@@ -19,5 +19,5 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 
 # Mac aliases, I'm not polutting my main bash profile with this mac
 # stuff!
-alias emacs='open -a /Applications/Emacs.app $1'
+alias emacs='open -a ${HOME}/Applications/Emacs.app $1'
 alias ldd='otool -L'
