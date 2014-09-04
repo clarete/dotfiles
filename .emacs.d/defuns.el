@@ -39,3 +39,8 @@ please, be careful, once called, it can't be stopped!"
   (find-file
    (let ((command (concat "python -c 'import sys, " name " as m; sys.stdout.write(m.__file__)'")))
      (replace-regexp-in-string ".py.$" ".py" (shell-command-to-string command)))))
+
+(defun touch (path)
+  "Calls the Unix touch command on 'path'"
+  (interactive "Fpath to the file to touch: ")
+  (shell-command-to-string (concat "touch " path)))
