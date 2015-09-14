@@ -36,20 +36,15 @@ function __ps1() {
     echo -en "\033[00;32m"
     local git=$(__git_ps1 "%s")
     [ -n "$git" ] && echo -n "$git "
+    echo -en "\033[31;1m♡ \033[01;30m$(basename $(pwd)) $\033[00m "
 }
 
 # This same line is repeated in the file ~/.virtualenvs/postactivate
-export PS1='$(__ps1)\[\033[31;1m\]♡  \[\033[01;30m\]$(basename $(pwd)) \$\[\033[00m\] '
+export PS1='$(__ps1)'
 
-# Python
-which virtualenvwrapper.sh &>/dev/null && {
-  source $(which virtualenvwrapper.sh);
-  export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)";
-  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute';
-  export VIRTUAL_ENV_DISABLE_PROMPT=1;
-  export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs";
-  export PIP_RESPECT_VIRTUALENV=true
-}
+# Pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+pyenv virtualenvwrapper
 
 # Adding my custom path directory
 PATH="$HOME/bin:$PATH"
