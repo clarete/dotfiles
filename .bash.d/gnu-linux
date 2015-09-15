@@ -22,3 +22,13 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
+
+# Python - virtualenvwrapper
+which virtualenvwrapper.sh &>/dev/null && {
+  source $(which virtualenvwrapper.sh);
+  export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)";
+  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute';
+  export VIRTUAL_ENV_DISABLE_PROMPT=1;
+  export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs";
+  export PIP_RESPECT_VIRTUALENV=true
+}

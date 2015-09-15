@@ -42,10 +42,6 @@ function __ps1() {
 # This same line is repeated in the file ~/.virtualenvs/postactivate
 export PS1='$(__ps1)'
 
-# Pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-pyenv virtualenvwrapper
-
 # Adding my custom path directory
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"

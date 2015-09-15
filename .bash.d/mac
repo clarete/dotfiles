@@ -18,3 +18,9 @@ fi
 # stuff!
 alias emacs='open -a ${HOME}/Applications/Emacs.app $1'
 alias ldd='otool -L'
+
+# Python - pyenv
+which pyenv &>/dev/null && {
+    eval "$(pyenv init -)";
+    pyenv virtualenvwrapper
+}
