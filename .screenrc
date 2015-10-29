@@ -7,8 +7,10 @@ setenv LC_CTYPE en_US.UTF-8
 
 # Nice status bar with a unicode heart, you need to have a fresh screen
 # installation, otherwise it will look ugly
+backtick 1 5 5  $HOME/bin/my-screen-date
+backtick 2 60 60 $HOME/bin/my-screen-battery
 hardstatus alwayslastline
-hardstatus string "%{kK} %-w%{=b ky} ♡ %t %{-}%{= Kk}%+w%{-}%> %="
+hardstatus string "%{wk} %-w%{=b kB}%n %t%{-}%{= Kw}%+w%{-} %> %=%{w}[%1`] [B:%2`]"
 
 # Further stuff
 multiuser on

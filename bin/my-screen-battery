@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/acpi | egrep -o '\b[0-9]+%'
