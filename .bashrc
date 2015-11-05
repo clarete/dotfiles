@@ -29,18 +29,22 @@ export EMAIL='lincoln@comum.org'
 export EDITOR="emacsc"
 
 # PS1, yeah it's a big deal!
-function __ps1() {
-    echo -en "\033[00;33m"
-    [ -n "$VIRTUAL_ENV" ] && echo -n "($(basename $VIRTUAL_ENV)) "
+black=$(tput setaf 0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+bold=$(tput bold)
+reset=$(tput sgr0)
 
-    echo -en "\033[00;32m"
-    local git=$(__git_ps1 "%s")
-    [ -n "$git" ] && echo -n "$git "
-    echo -en "\033[31;1m♡ \033[01;30m$(basename $(pwd)) $\033[00m "
+function __venv_name() {
+    [ -n "$VIRTUAL_ENV" ] && echo -n "($(basename $VIRTUAL_ENV))"
 }
 
-# This same line is repeated in the file ~/.virtualenvs/postactivate
-export PS1='$(__ps1)'
+# Since the venv name written in PS1 by the virtualenv's postactivate
+# script won't have colors, the original customized value is saved in
+# the variable `ORIG_PS1` and re-exported in the postactivate script.
+export ORIG_PS1="\[$yellow\]\$(__venv_name) \[$green\]\$(__git_ps1 \"%s \")\[$red\]♡ \[$black\]\[$bold\]\W $ \[$reset\]"
+export PS1=$ORIG_PS1
 
 # Adding my custom path directory
 PATH="$HOME/bin:$PATH"

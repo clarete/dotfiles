@@ -1,3 +1,8 @@
 #!/bin/bash
 # This hook is sourced after every virtualenv is activated.
-export PS1='$(__ps1)'
+export PS1=$ORIG_PS1
+
+venv=$(basename $VIRTUAL_ENV)
+path=$(find $HOME/src -type d -name *$venv -depth 3)
+
+[ -n "$path" ] && cd $path
