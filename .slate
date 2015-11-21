@@ -5,15 +5,18 @@ config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
 # Basic stuff
-bind g:t,ctrl hint
-bind r:t,ctrl relaunch
-bind u:t,ctrl undo
+bind g:3,ctrl hint
+bind r:3,ctrl relaunch
+bind u:3,ctrl undo
 
 # Fullscreen
-bind f:t,ctrl              move screenOriginX;screenOriginY screenSizeX;screenSizeY
+bind f:3,ctrl              move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # Center
-bind c:t,ctrl              move (screenSizeX/2)-(newWindowSizeX/2);(screenSizeY/2)-(newWindowSizeY/2) screenSizeX/1.5;screenSizeY/1.5
+bind c:3,ctrl              move (screenSizeX/2)-(newWindowSizeX/2);(screenSizeY/2)-(newWindowSizeY/2) screenSizeX/1.5;screenSizeY/1.5
+
+# Center vertically
+bind v:3,ctrl              move (screenSizeX/2)-(newWindowSizeX/2);screenOriginY screenSizeX/1.5;screenSizeY
 
 # Move window to screen corners
 bind left:ctrl;alt         corner top-left resize:screenSizeX/2;screenSizeY/2
