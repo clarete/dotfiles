@@ -55,8 +55,7 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Go
-export GOPATH="${HOME}/Work/go"
-PATH="${PATH}:${GOPATH}/bin"
+export GOPATH=${HOME}
 
 # Exporting the PATH before loading the custom scripts.
 export PATH
