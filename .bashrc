@@ -5,6 +5,9 @@
 HISTCONTROL=ignoreboth
 export HISTSIZE=1000
 
+# Timestamps in history file
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
