@@ -21,7 +21,6 @@ function start_agent {
 }
 
 # Source SSH settings, if applicable
-
 if [ -f "${SSH_ENV}" ]; then
      . "${SSH_ENV}" > /dev/null
      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
@@ -31,12 +30,21 @@ else
      start_agent;
 fi
 
-# Python - virtualenvwrapper
-which virtualenvwrapper.sh &>/dev/null && {
-  source $(which virtualenvwrapper.sh);
-  export VIRTUALENVWRAPPER_VIRTUALENV="$(which virtualenv)";
-  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages --distribute';
-  export VIRTUAL_ENV_DISABLE_PROMPT=1;
-  export PIP_VIRTUALENV_BASE="$HOME/.virtualenvs";
-  export PIP_RESPECT_VIRTUALENV=true
+# Python - pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_BIN="$PYENV_ROOT/bin/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+function cl_pyenv_install {
+    git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
+    git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git \
+        $PYENV_ROOT/plugins/pyenv-virtualenvwrapper
 }
+
+if [ -e $PYENV_BIN ]; then
+    eval "$(pyenv init -)"
+    pyenv virtualenvwrapper
+else
+    echo "No Pyenv, downloading and activating it"
+    cl_pyenv_install
+    eval "$(pyenv init -)"
+fi
