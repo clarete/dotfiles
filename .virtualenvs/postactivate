@@ -3,6 +3,6 @@
 export PS1=$ORIG_PS1
 
 venv=$(basename $VIRTUAL_ENV)
-path=$(find $HOME/src -maxdepth 3 -wholename "*$venv" -print0)
+path=$(find $HOME/src -maxdepth 3 -wholename "*/$venv" -print0)
 
 [ -n "$path" ] && cd $path
