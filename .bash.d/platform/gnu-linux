@@ -29,22 +29,3 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
-
-# Python - pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-export PYENV_BIN="$PYENV_ROOT/bin/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-function cl_pyenv_install {
-    git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
-    git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git \
-        $PYENV_ROOT/plugins/pyenv-virtualenvwrapper
-}
-
-if [ -e $PYENV_BIN ]; then
-    eval "$(pyenv init -)"
-    pyenv virtualenvwrapper
-else
-    echo "No Pyenv, downloading and activating it"
-    cl_pyenv_install
-    eval "$(pyenv init -)"
-fi

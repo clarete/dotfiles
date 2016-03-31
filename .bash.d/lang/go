@@ -1,0 +1,2 @@
+# -*- Mode: shell-script; -*-
+export GOPATH=${HOME}

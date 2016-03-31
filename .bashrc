@@ -8,18 +8,14 @@ export HISTSIZE=1000
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# check the window size after each command and, if necessary, update
+# the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # Alias definitions.
 if [ -f ~/.bash.d/aliases ]; then
     . ~/.bash.d/aliases
 fi
-
-# Loading specific things depending on our platform
-[ "`uname`" = "Darwin" ] && . $HOME/.bash.d/mac
-[ "`uname -o 2>/dev/null`" = "GNU/Linux" ] && . $HOME/.bash.d/gnu-linux
 
 # I want to know when things break!
 ulimit -c unlimited
@@ -46,22 +42,15 @@ function __venv_name() {
 export ORIG_PS1="\[$yellow\]\$(__venv_name) \[$green\]\$(__git_ps1 \"%s \")\[$red\]♡ \[$black\]\[$bold\]\W $ \[$reset\]"
 export PS1=$ORIG_PS1
 
-# Adding my custom path directory
+# Extend path with reasonable directories
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-
-# Ruby stuff, Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# Go
-export GOPATH=${HOME}
-
-# Exporting the PATH before loading the custom scripts.
 export PATH
 
-# Loading custom scripts
-for i in $HOME/.bash.d/custom.d/*.sh; do . $i; done
+# Load platform specific settings
+platform=$(uname -o 2>/dev/null | tr / - | tr [A-Z] [a-z])
+. $HOME/.bash.d/platform/$platform
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Load programming framework specific settings
+. $HOME/.bash.d/lang/go
+. $HOME/.bash.d/lang/python
