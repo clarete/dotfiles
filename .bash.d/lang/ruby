@@ -1,0 +1,14 @@
+# -*- Mode: shell-script; -*-
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+RBENV_BIN="$RBENV_ROOT/bin/rbenv"
+
+if [ -e $RBENV_BIN ]; then
+    eval "$(rbenv init -)"
+else
+    echo "No rbenv, downloading and activating it"
+    git clone https://github.com/rbenv/rbenv.git $RBENV_ROOT
+    git clone https://github.com/sstephenson/ruby-build.git \
+        $RBENV_ROOT/plugins/ruby-build
+    eval "$(rbenv init -)"
+fi
