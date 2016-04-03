@@ -12,7 +12,7 @@ There's a small helper script that install symlinks of all the available
 files for you. To run it, issue the following commands:
 
 ```bash
-$ pip install -r requirements
+$ pip install -r requirements.txt # optional
 $ ./install
 ```
 

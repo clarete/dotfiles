@@ -44,7 +44,7 @@ except ImportError:
 
 AVOID_LIST = (
     os.path.basename(__file__),
-    'requirements.pip',
+    'requirements.txt',
     '.git',
     '.gitignore',
     '.gitmodule',
