@@ -17,7 +17,6 @@ multiuser on
 acladd lincoln
 defscrollback 100000
 startup_message off
-shell -${SHELL}
 
 # Emacs-ish keybindings to move around regions
 
