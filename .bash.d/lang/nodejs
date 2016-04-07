@@ -1,2 +1,20 @@
 # -*- Mode: shell-script; -*-
 export PATH="node_modules/.bin:$PATH"
+
+export NODENV_ROOT="$HOME/.nodenv"
+export PATH="$NODENV_ROOT/bin:$PATH"
+export NODENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+NODENV_BIN="$NODENV_ROOT/bin/nodenv"
+
+# This script won't work without npm
+which npm &>/dev/null && {
+    if [ -e $NODENV_BIN ]; then
+        eval "$(nodenv init -)"
+    else
+        echo "No Nodenv, downloading and activating it"
+        git clone https://github.com/nodenv/nodenv.git $NODENV_ROOT
+        git clone https://github.com/nodenv/node-build.git \
+            $NODENV_ROOT/plugins/node-build
+        eval "$(nodenv init -)"
+    fi
+}
