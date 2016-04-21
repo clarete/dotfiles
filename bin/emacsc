@@ -8,7 +8,7 @@
 # without an emacs server, the client itself will take care of spawning
 # a new one.
 
-if [ "`uname -o`" = "Darwin" ]; then
+if [ "`uname`" = "Darwin" ]; then
     APP="$HOME/Applications/Emacs.app"
     SRV="open $APP"
     CLI="$APP/Contents/MacOS/bin/emacsclient"
