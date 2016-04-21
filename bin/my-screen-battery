@@ -3,6 +3,6 @@
 if [ "`uname -s`" = "Darwin" ]; then
     percentage=$(pmset -g ps  |  sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')
 else
-    percentage=$(/usr/bin/acpi | egrep -o '\b[0-9]+%')
+    percentage=$(/usr/bin/acpi | grep -v unavailable | egrep -o '\b[0-9]+%')
 fi
 echo $percentage
