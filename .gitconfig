@@ -18,4 +18,5 @@
 [hub]
     protocol = https
 [rerere]
-    enabled = true
+	enabled = true
+	autoupdate = true
