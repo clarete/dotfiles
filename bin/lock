@@ -1,0 +1,2 @@
+#!/bin/sh
+xsecurelock auth_pam_x11 saver_blank
