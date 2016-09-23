@@ -27,6 +27,10 @@ ulimit -c unlimited
 export EMAIL='lincoln@comum.org'
 export EDITOR="emacsc"
 
+# Debian variables
+export DEBEMAIL='lincoln@comum.org'
+export DEBFULLNAME='Lincoln Clarete'
+
 # PS1, yeah it's a big deal!
 black=$(tput setaf 0)
 red=$(tput setaf 1)
