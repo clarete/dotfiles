@@ -1,0 +1,8 @@
+Xft.dpi: 152
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: true
+Xft.rgba: rgb
+Xft.hintstyle: hintfull
+XTerm*faceName: DejaVu Sans Mono
+*faceName: DejaVu Sans Mono
