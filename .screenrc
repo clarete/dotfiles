@@ -17,6 +17,7 @@ multiuser on
 acladd lincoln
 defscrollback 100000
 startup_message off
+term screen-256color
 
 # Emacs-ish keybindings to move around regions
 
