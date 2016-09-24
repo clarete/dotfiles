@@ -1,5 +1,8 @@
 # -*- Mode: conf -*-
 
+# Start from home
+chdir $HOME
+
 # bitches love utf-8
 defutf8 on
 defencoding UTF-8
