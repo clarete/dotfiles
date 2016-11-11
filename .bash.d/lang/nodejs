@@ -2,7 +2,7 @@
 export PATH="node_modules/.bin:$PATH"
 
 export NODENV_ROOT="$HOME/.nodenv"
-export PATH="$NODENV_ROOT/bin:$PATH"
+export PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
 export NODENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 NODENV_BIN="$NODENV_ROOT/bin/nodenv"
 
