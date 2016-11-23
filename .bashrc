@@ -55,7 +55,7 @@ PATH="$HOME/.local/bin:$PATH"
 export PATH
 
 # Load platform specific settings
-platform=$(uname 2>/dev/null | tr [A-Z] [a-z])
+platform=$(uname 2>/dev/null | tr '[A-Z]' '[a-z]')
 . $HOME/.bash.d/platform/$platform
 
 # Load programming framework specific settings
