@@ -1,3 +1,7 @@
+! Fix tilda & backticks on macbook air
+keycode 94 = grave asciitilde
+
+! Swap option and command in general macbooks
 clear mod1
 clear mod4
 

@@ -14,12 +14,16 @@ XF86AudioPrev
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
 XF86AudioStop
 
+## To figure out value for -c look at the index of the sound card
+## here:
+##  $ cat /proc/asound/card
+
 # Volume up
-"amixer -c 0 sset Master 3+"
+"amixer -c 1 sset Master 3+"
 XF86AudioRaiseVolume
 
 # Volume down
-"amixer -c 0 sset Master 3-"
+"amixer -c 1 sset Master 3-"
 XF86AudioLowerVolume
 
 # Volume down
