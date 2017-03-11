@@ -1,2 +1,10 @@
 #!/bin/sh
-xsecurelock auth_pam_x11 saver_blank
+
+XSECURELOCK=`which xsecurelock 2>/dev/null`
+XSCREENSAVER=`which xscreensaver-command 2>/dev/null`
+
+if [ -n "$XSECURELOCK" ]; then
+    xsecurelock auth_pam_x11 saver_blank
+elif [ -n "$XSCREENSAVER" ]; then
+    xscreensaver-command -lock
+fi
