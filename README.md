@@ -12,7 +12,7 @@ There's a small helper script that install symlinks of all the available
 files for you. To run it, issue the following commands:
 
 ```bash
-$ pip install -r requirements.txt # optional
+$ pip install -r requirements.txt # optional for coloring
 $ ./install
 ```
 
@@ -24,7 +24,3 @@ the `--help` flag to define where your files are going to be saved.
 
 If you don't trust my script, you can just copy the files that you want
 to your home folder or symlink them.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/clarete/dotfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
