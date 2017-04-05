@@ -31,6 +31,9 @@ export EDITOR="emacsc"
 export DEBEMAIL='lincoln@comum.org'
 export DEBFULLNAME='Lincoln Clarete'
 
+# Tell chromium its fine to load extensions
+export CHROMIUM_FLAGS='--enable-remote-extensions'
+
 # PS1, yeah it's a big deal!
 black=$(tput setaf 0)
 red=$(tput setaf 1)
