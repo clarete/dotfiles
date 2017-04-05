@@ -66,3 +66,4 @@ platform=$(uname 2>/dev/null | tr '[A-Z]' '[a-z]')
 . $HOME/.bash.d/lang/nodejs
 . $HOME/.bash.d/lang/python
 . $HOME/.bash.d/lang/ruby
+. $HOME/.bash.d/lang/android
