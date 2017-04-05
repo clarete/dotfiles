@@ -54,7 +54,7 @@ export PS1=$ORIG_PS1
 
 # Extend path with reasonable directories
 PATH="$HOME/bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/.localemacs/bin:$PATH"
 export PATH
 
 # Load platform specific settings
