@@ -1,0 +1,26 @@
+# -*- Mode: Conf -*-
+
+[general]
+accounts = lincoln@clarete.li
+pythonfile = ~/.offlineimap-helpers.py
+ui = ttyui
+
+[Account lincoln@clarete.li]
+localrepository = lincoln@clarete.li-local
+remoterepository = lincoln@clarete.li-remote
+synclabels = yes
+
+[Repository lincoln@clarete.li-local]
+type = Maildir
+localfolders = ~/mail/lincoln@clarete.li
+
+[Repository lincoln@clarete.li-remote]
+type = Gmail
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = lincoln@clarete.li
+auth_mechanisms = XOAUTH2
+oauth2_client_id_eval = get_sec('gmail_oauth2_client_id')
+oauth2_client_secret_eval = get_sec('gmail_oauth2_client_secret')
+oauth2_refresh_token_eval = get_sec('gmail_oauth2_refresh_token')
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+nametrans = lambda folder: folder.replace('[Gmail]/', '')
