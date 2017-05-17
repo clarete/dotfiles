@@ -8,6 +8,7 @@ ui = ttyui
 [Account lincoln@clarete.li]
 localrepository = lincoln@clarete.li-local
 remoterepository = lincoln@clarete.li-remote
+postsynchook = notmuch new
 
 [Repository lincoln@clarete.li-local]
 type = Maildir
