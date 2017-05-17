@@ -15,7 +15,7 @@ def parse_authinfo(data):
     return dict(parse_kv(line) for line in data.splitlines())
 
 def get_sec(key):
-    gpg = gnupg.GPG(gnupghome=os.path.expanduser('~/.gnupg'))
+    gpg = gnupg.GPG(gnupghome=os.path.expanduser('~/.gnupg'), use_agent=True)
     with io.open(os.path.expanduser('~/.authinfo.gpg'), 'rb') as fd:
         return parse_authinfo(gpg.decrypt_file(fd).data)[key]
 
