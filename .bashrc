@@ -64,6 +64,9 @@ platform=$(uname 2>/dev/null | tr '[A-Z]' '[a-z]')
 # Load programming framework specific settings
 . $HOME/.bash.d/lang/go
 . $HOME/.bash.d/lang/nodejs
+. $HOME/.bash.d/lang/ocaml
+. $HOME/.bash.d/lang/perl
 . $HOME/.bash.d/lang/python
 . $HOME/.bash.d/lang/ruby
+. $HOME/.bash.d/lang/rust
 . $HOME/.bash.d/lang/android

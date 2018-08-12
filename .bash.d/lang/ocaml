@@ -1,0 +1,6 @@
+# -*- Mode: shell-script; -*-
+
+# OPAM configuration
+[ -f /home/lincoln/.opam/opam-init/init.sh ] && {
+  . /home/lincoln/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+}
