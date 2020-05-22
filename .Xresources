@@ -1,14 +1,15 @@
-Xft.dpi: 128
+Xft.dpi:96
 Xft.antialias: true
 Xft.hinting: true
 Xft.autohint: true
 Xft.rgba: rgb
-Xft.hintstyle: hintfull
-XTerm*faceName: DejaVu Sans Mono
-*faceName: DejaVu Sans Mono
+Xft.hintstyle: hintslight ! used to be hintfull
 
-URxvt.perl-ext-common:      selection-to-clipboard
+emacs.face: FiraCode NF:pixelsize=12
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=14
 
+URxvt.perl-ext-common:      selection-to-clipboard,font-size
+URxvt.locale:               true
 URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.transparent:          false
@@ -19,16 +20,17 @@ URxvt.internalBorder:       0
 URxvt.lineSpace: 0
 URxvt.scrollStyle:          rxvt
 URxvt.scrollBar: false
+URxvt*loginShell: true
 
-URxvt*font: xft:Monospace:pixelsize=14
-URxvt*boldFont: xft:Monospace:pixelsize=14
-
-!URxvt.font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
-URxvt.letterSpace: -2
-URxvt*skipBuiltinGlyphs: true
+URxvt*letterSpace: -2
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
 URxvt*scrollWithBuffer: true
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
 
 ! Dracula Xresources palette
 *.foreground: #F8F8F2
