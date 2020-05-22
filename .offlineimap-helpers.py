@@ -20,26 +20,19 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import io
-import os.path
 import sys
-import gnupg
+import subprocess
 
-
-def parse_kv(line):
-    try:
-        _, key, _, _, _, user, _, password = line.split()
-        return (key, password[1:-1])
-    except ValueError:
-        return (None, None)
-
-def parse_authinfo(data):
-    return dict(parse_kv(line) for line in data.splitlines())
 
 def get_sec(key):
-    gpg = gnupg.GPG(gnupghome=os.path.expanduser('~/.gnupg'), use_agent=True)
-    with io.open(os.path.expanduser('~/.authinfo.gpg'), 'rb') as fd:
-        return parse_authinfo(gpg.decrypt_file(fd).data)[key]
+    """Get a key from `pass`
+
+    Will block on a pinentry program if auth isn't cached.
+    """
+    return (subprocess.check_output(["pass", key])
+            .decode(encoding="utf-8")
+            .strip())
+
 
 if __name__ == '__main__' and len(sys.argv) == 2:
-    print(get_sec(sys.argv[1]))
+    print(get_pass(sys.argv[1]))
