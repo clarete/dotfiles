@@ -49,7 +49,7 @@ function __venv_name() {
 # Since the venv name written in PS1 by the virtualenv's postactivate
 # script won't have colors, the original customized value is saved in
 # the variable `ORIG_PS1` and re-exported in the postactivate script.
-export ORIG_PS1="\[$yellow\]\$(__venv_name) \[$green\]\$(__git_ps1 \"%s \")\[$red\]♡ \[$reset\]\[$bold\]\W $ \[$reset\]"
+export ORIG_PS1="\[$yellow\]\$(__venv_name) \[$green\]\$(__git_ps1 \"%s \")\[$red\]♥ \[$reset\]\[$bold\]\W $ \[$reset\]"
 export PS1=$ORIG_PS1
 
 # Extend path with reasonable directories
