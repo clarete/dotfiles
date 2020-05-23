@@ -25,7 +25,7 @@ ulimit -c unlimited
 
 # General stuff
 export EMAIL='lincoln@clarete.li'
-export EDITOR="emacsc"
+export EDITOR="emacsclient"
 
 # Debian variables
 export DEBEMAIL='lincoln@comum.org'
