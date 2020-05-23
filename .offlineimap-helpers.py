@@ -20,6 +20,7 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
 import sys
 import subprocess
 
@@ -32,6 +33,12 @@ def get_sec(key):
     return (subprocess.check_output(["pass", key])
             .decode(encoding="utf-8")
             .strip())
+
+
+def get_filter(folder):
+    "Filter which folder to sync"
+    env_filter = os.environ.get('OFFLINEIMAP_FILTER_FOLDER')
+    return True if env_filter is None else folder.startswith(env_filter)
 
 
 if __name__ == '__main__' and len(sys.argv) == 2:

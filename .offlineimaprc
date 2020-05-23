@@ -13,6 +13,7 @@ remoterepository = lincoln@clarete.li-remote
 type = Maildir
 localfolders = ~/mail/lincoln@clarete.li
 restoreatime = no
+folderfilter = get_filter
 nametrans = lambda f: '[Gmail]/' + f if f in [
     'Drafts',
     'Starred',
