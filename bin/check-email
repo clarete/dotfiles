@@ -1,0 +1,16 @@
+#!/bin/bash
+
+LOGFILE=$HOME/tmp/logs/offlineimap
+I=0
+while :; do
+    if (( $(($I % 5)) == 0 )); then
+        echo "sync all folders"
+        offlineimap 2> $LOGFILE
+    else
+        echo "sync just inbox"
+        OFFLINEIMAP_FILTER_FOLDER=INBOX offlineimap 2> $LOGFILE
+    fi
+    I=$(($I + 1))
+    sleep 2m
+done
+
