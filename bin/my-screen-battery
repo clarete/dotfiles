@@ -1,15 +1,15 @@
 #!/bin/sh
 
-UPOWER=$(which upower)
-ACPI=$(which acpi)
+UPOWER=$(command -v upower)
+ACPI=$(command -v acpi)
 
 if [ "`uname -s`" = "Darwin" ]; then
     percentage=$(pmset -g ps  |  sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p')
 else
     if test -n $UPOWER; then
-        percentage=$($UPOWER --dump | grep percentage | egrep -o '\b[0-9]+%' | head -n1)
+        percentage=$($UPOWER --dump | grep percentage | egrep -o '\b[0-9.]+%' | head -n1)
     elif test -n $ACPI; then
-        percentage=$($ACPI | grep -v unavailable | egrep -o '\b[0-9]+%')
+        percentage=$($ACPI | grep -v unavailable | egrep -o '\b[0-9.]+%')
     fi
 fi
 echo $percentage
