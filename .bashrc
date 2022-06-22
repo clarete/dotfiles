@@ -31,6 +31,9 @@ export EDITOR="emacsclient"
 export DEBEMAIL='lincoln@comum.org'
 export DEBFULLNAME='Lincoln Clarete'
 
+# this is for fixing syntax highlight in bat
+unset COLORTERM
+
 # Tell chromium its fine to load extensions
 export CHROMIUM_FLAGS='--enable-remote-extensions'
 
